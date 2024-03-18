@@ -1,4 +1,5 @@
-import './App.css';
+//import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Компоненты
 import NoLogined from '../NoLogined/NoLogined';

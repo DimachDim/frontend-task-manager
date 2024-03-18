@@ -9,21 +9,25 @@ import Registration from "./Registration";
 
 export default function NoLogined(){
     return(
-        <BrowserRouter>
-            {/* Ссылки */}
-            <Link to={'/'}>
-                <Button>Login</Button>
-            </Link>
-            
-            <Link to={'/reg'}>
-                <Button>Registration</Button>
-            </Link>
-            
-            {/* Представления */}
-            <Routes>
-                <Route path='/' element={<Login/>}/>
-                <Route path='/reg' element={<Registration/>}/>
-            </Routes>
-        </BrowserRouter> 
+        <div className="position-absolute top-50 start-50 translate-middle">
+
+            <BrowserRouter>
+                {/* Ссылки */}
+                <Link to={'/'}>
+                    <Button variant="">Login</Button>
+                </Link>
+                
+                <Link to={'/reg'}>
+                    <Button>Registration</Button>
+                </Link>
+                
+                {/* Представления */}
+                <Routes>
+                    <Route path='/' element={<Login/>}/>
+                    <Route path='/reg' element={<Registration/>}/>
+                </Routes>
+            </BrowserRouter>
+
+        </div>
     )
 }
