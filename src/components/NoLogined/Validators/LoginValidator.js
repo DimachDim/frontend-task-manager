@@ -1,5 +1,3 @@
-import React from "react"
-import { useSelector, useDispatch } from 'react-redux';
 //Urls
 
 export default function LoginValidator(refUser, refPassword, actionErrorText){

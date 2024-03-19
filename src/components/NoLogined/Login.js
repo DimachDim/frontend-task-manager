@@ -18,7 +18,7 @@ export default function Login(){
     const refUsername = React.createRef();
     const refPassword = React.createRef();
 
-    console.log(error)
+
     return(
         <Form>
             <Form.Group className="mb-3">
