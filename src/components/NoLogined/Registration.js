@@ -26,7 +26,7 @@ export default function Registration(){
             </Form.Group>
         
             <Button variant="primary" type="submit">
-                Войти
+                Регистрация
             </Button>
         </Form>
     )
