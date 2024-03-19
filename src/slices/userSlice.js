@@ -12,13 +12,15 @@ const userSlice = createSlice({
   initialState,     //Начальное состояние
   // Редьюсеры в слайсах меняют состояние и ничего не возвращают
   reducers: {
-
+    createErrorText: (state, action)=>{
+      state.error.text = action.payload
+    }
   },
 });
 
 // Слайс генерирует действия, которые экспортируются отдельно
 // Действия генерируются автоматически из имен ключей редьюсеров
-export const { } = userSlice.actions;
+export const { createErrorText } = userSlice.actions;
 
 // По умолчанию экспортируется редьюсер, сгенерированный слайсом
 export default userSlice.reducer;
