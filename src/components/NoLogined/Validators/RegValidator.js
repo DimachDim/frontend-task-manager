@@ -1,7 +1,9 @@
-
 //Urls
+import {CREATE_USER} from '../../../paths/LoginUrl'
 
-export default function RegValidator(refToken, refUserName, refPassword, refRepeatPasword, actionErrorText){
+
+
+export default async function RegValidator(refToken, refUserName, refPassword, refRepeatPasword, actionErrorText){
     
     // Достаем содержимое полей
     let token, userName, password, repeatPasword;
@@ -37,5 +39,20 @@ export default function RegValidator(refToken, refUserName, refPassword, refRepe
 
 
     // Если поля заполнены отправляем данные на сервер
-
+    let response = await fetch('http://taskmanager/users', {
+        mode: 'cors',
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            
+        },
+        body: JSON.stringify({
+            userName: userName
+        }) 
+    })  .then(resp => resp.json())
+        .then(json => json ); 
+        
+    
+    console.log(response)
+    
 }
