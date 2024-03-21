@@ -1,4 +1,4 @@
-//Urls
+
 
 export default async function LoginValidator(refUser, refPassword, actionErrorText, actionSid){
     
