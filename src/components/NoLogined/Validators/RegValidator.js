@@ -58,10 +58,12 @@ export default async function RegValidator(refToken, refUserName, refPassword, r
         actionErrorText(response.errorText)
     
     // Если пришла сессия    
-    }if (response.sid != undefined) {
+    }else if (response.sid != undefined) {
         // Передаем сессию в состояние
         actionSid(response.sid);
-    
+        // Убираем все сообщения об ошибке
+        actionErrorText(undefined)
+
     // В остальных случаях
     } else {
         // Непредвиденная ошибка

@@ -18,7 +18,6 @@ export default function Registration(){
     const refPassword = React.createRef();
     const refRepeatPasword = React.createRef();
 
-    console.log(error)
     return(
         <Form>
             <Form.Group className="mb-3">

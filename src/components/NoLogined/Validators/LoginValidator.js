@@ -1,6 +1,6 @@
 //Urls
 
-export default function LoginValidator(refUser, refPassword, actionErrorText){
+export default async function LoginValidator(refUser, refPassword, actionErrorText, actionSid){
     
     // Достаем содержимое полей
     let userName, password;
@@ -20,5 +20,36 @@ export default function LoginValidator(refUser, refPassword, actionErrorText){
 
 
     // Если поля заполнены отправляем данные на сервер
+    let response = await fetch('http://taskmanager/sids', {
+        mode: 'cors',
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify({
+            userName: userName,
+            password: password,
+        }) 
+    })  .then(resp => resp.json())
+        .then(json => json ); 
 
+
+
+    // Если пришел текст ошибки
+    if(response.errorText != undefined){
+        // Передать текст ошибки в состояние
+        actionErrorText(response.errorText)
+    
+    // Если пришла сессия    
+    }else if (response.sid != undefined) {
+        // Передаем сессию в состояние
+        actionSid(response.sid);
+        // Убираем все сообщения об ошибке
+        actionErrorText(undefined)
+    
+    // В остальных случаях
+    } else {
+        // Непредвиденная ошибка
+        actionErrorText('Произошла непредвиденная ошибка')
+    }
 }
