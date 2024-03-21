@@ -1,15 +1,16 @@
 import React from "react";
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 // Компоненты
-import NavBAr from "./NavBar/NavBar";
+import NavBar from "./NavBar/NavBar";
 
 export default function Logined(){
     return(
         <>
             <BrowserRouter>
-                <NavBAr/>
+                <NavBar/>
                 <Routes>
                     <Route path="/" element={'Home'}/>
+                    <Route path="/logout" element={'Logout'}/>
                 </Routes>
             </BrowserRouter>
         </>
