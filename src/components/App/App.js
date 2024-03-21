@@ -1,12 +1,15 @@
 //import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector, useDispatch } from 'react-redux';
 import setCookie from '../../functions/setCookie';
 import getCookie from '../../functions/getCookie';
+
+import { useSelector, useDispatch } from 'react-redux';
 import { updateErrorText } from '../../slices/userSlice';
 
 //Компоненты
 import NoLogined from '../NoLogined/NoLogined';
+import Logined from '../Logined/Logined';
+
 
 function App() {
 
@@ -32,7 +35,7 @@ function App() {
 
     // В куки есть сессия
     case (getCookie('sid') != ''):
-      return <>Есть куки</>
+      return <Logined/>
     
     // В куки нет сессии
     case (getCookie('sid') === ''):
@@ -40,17 +43,9 @@ function App() {
 
     // В других случаях
     default:
-      dispatch.updateErrorText('Непредвиденная ошибка. На стороне клиента')
+      dispatch(updateErrorText('Непредвиденная ошибка. На стороне клиента'));
   }
 
-
-
-
-  //return (
-  //  <>
-  //    <NoLogined/>
-  //  </>
-  //);
 }
 
 export default App;
