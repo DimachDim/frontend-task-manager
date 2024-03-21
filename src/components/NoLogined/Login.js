@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import LoginValidator from "./Validators/LoginValidator";   // Валидатор формы
 
 import { useSelector, useDispatch } from 'react-redux';
-import { createErrorText } from '../../slices/userSlice';
+import { updateErrorText } from '../../slices/userSlice';
 
 
 
@@ -31,7 +31,7 @@ export default function Login(){
                 <Form.Control type="password" placeholder="Password" ref={refPassword}/>
             </Form.Group>
 
-            <Button variant="primary" onClick={()=>LoginValidator(refUsername, refPassword, (text)=>dispatch(createErrorText(text)))}>
+            <Button variant="primary" onClick={()=>LoginValidator(refUsername, refPassword, (text)=>dispatch(updateErrorText(text)))}>
                 Войти
             </Button>
         </Form>

@@ -3,7 +3,7 @@ import {CREATE_USER} from '../../../paths/LoginUrl'
 
 
 
-export default async function RegValidator(refToken, refUserName, refPassword, refRepeatPasword, actionErrorText){
+export default async function RegValidator(refToken, refUserName, refPassword, refRepeatPasword, actionErrorText, actionSid){
     
     // Достаем содержимое полей
     let token, userName, password, repeatPasword;
@@ -37,22 +37,34 @@ export default async function RegValidator(refToken, refUserName, refPassword, r
         return;
     }
 
-
     // Если поля заполнены отправляем данные на сервер
     let response = await fetch('http://taskmanager/users', {
         mode: 'cors',
         method: 'post',
         headers: {
             'Content-Type': 'application/json; charset=utf-8',
-            
         },
         body: JSON.stringify({
-            userName: userName
+            userName: userName,
+            password: password,
+            token: token
         }) 
     })  .then(resp => resp.json())
         .then(json => json ); 
-        
     
-    console.log(response)
+    // Если пришел текст ошибки
+    if(response.errorText != undefined){
+        // Передать текст ошибки в состояние
+        actionErrorText(response.errorText)
     
+    // Если пришла сессия    
+    }if (response.sid != undefined) {
+        // Передаем сессию в состояние
+        actionSid(response.sid);
+    
+    // В остальных случаях
+    } else {
+        // Непредвиденная ошибка
+        actionErrorText('Произошла непредвиденная ошибка')
+    }
 }
