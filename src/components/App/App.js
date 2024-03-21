@@ -2,6 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
 import setCookie from '../../functions/setCookie';
+import getCookie from '../../functions/getCookie';
 
 //Компоненты
 import NoLogined from '../NoLogined/NoLogined';
@@ -22,7 +23,7 @@ function App() {
     setCookie('sid', user.sid, 30)
   }
   
-  console.log(user)
+  console.log(getCookie('sid'))
 
   return (
     <>
