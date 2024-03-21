@@ -1,4 +1,4 @@
-
+import { CREATE_SID } from "../../../paths/LoginUrl";
 
 export default async function LoginValidator(refUser, refPassword, actionErrorText, actionSid){
     
@@ -20,7 +20,7 @@ export default async function LoginValidator(refUser, refPassword, actionErrorTe
 
 
     // Если поля заполнены отправляем данные на сервер
-    let response = await fetch('http://taskmanager/sids', {
+    let response = await fetch(CREATE_SID, {
         mode: 'cors',
         method: 'post',
         headers: {

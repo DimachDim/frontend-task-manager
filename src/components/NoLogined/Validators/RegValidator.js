@@ -38,7 +38,7 @@ export default async function RegValidator(refToken, refUserName, refPassword, r
     }
 
     // Если поля заполнены отправляем данные на сервер
-    let response = await fetch('http://taskmanager/users', {
+    let response = await fetch(CREATE_USER, {
         mode: 'cors',
         method: 'post',
         headers: {

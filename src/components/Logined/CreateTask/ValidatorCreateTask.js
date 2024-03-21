@@ -1,4 +1,4 @@
-
+import { CREATE_TASK } from "../../../paths/Tasks";
 
 export default async function validatorCreateTask(refTitle, refText, sid, actionErrorText, actionInpText){
 
@@ -18,7 +18,7 @@ export default async function validatorCreateTask(refTitle, refText, sid, action
     }
 
     // Отправляем данные на сервер
-    let response = await fetch('http://taskmanager/tasks', {
+    let response = await fetch(CREATE_TASK, {
         mode: 'cors',
         method: 'post',
         headers: {
