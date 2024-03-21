@@ -12,7 +12,7 @@ export default function NavBar(){
             <Navbar.Collapse>
                 
                 <Nav>
-                    <Nav.Link as={Link} to='/'>Home</Nav.Link>
+                    <Nav.Link as={Link} to='/'>Создать задачу</Nav.Link>
                     <Nav.Link as={Link} to='/logout'>Выход</Nav.Link>
                 </Nav>
 
