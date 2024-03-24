@@ -8,6 +8,7 @@ import { updateSid } from "../../slices/userSlice";
 // Компоненты
 import NavBar from "./NavBar/NavBar";
 import CreateTask from "./CreateTask/CreateTask";
+import MyTasks from "./Tasks/ReadTask/MyTasks";
 
 export default function Logined(){
 
@@ -28,7 +29,8 @@ export default function Logined(){
         <BrowserRouter>
             <NavBar/>
             <Routes>
-                <Route path="/" element={<CreateTask/>}/>
+                <Route path="/" element={<CreateTask/>                  /* Создание задачи */}/>
+                <Route path="/tasks/my-tasks" element={<MyTasks/>       /* Мои задачи */}/>
                 <Route path="/logout" element={'Logout'}/>
             </Routes>
         </BrowserRouter>
