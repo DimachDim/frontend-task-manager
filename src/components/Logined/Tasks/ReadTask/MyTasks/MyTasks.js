@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 
 import { getMyTasks } from "./myTasksRequest";
 
+import ListTask from "../ListTask";
+
 export default function MyTasks(){
 
     // Для работы с состоянием
@@ -25,13 +27,10 @@ export default function MyTasks(){
         getData()
     }, [ user.userId])
     
-
-    
-    console.log(arrTasks)
     
     return(
         <>
-            MyTasks
+            <ListTask arrData={arrTasks}/>
         </>
     )
 }
