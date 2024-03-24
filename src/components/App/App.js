@@ -28,7 +28,7 @@ function App() {
     setCookie('sid', user.sid, 30)
   }
   
-  console.log(user)
+
 
   // Отрисовка по условию
   switch(true){

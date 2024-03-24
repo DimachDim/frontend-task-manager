@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import getCookie from "../../functions/getCookie";
 
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserSid } from "../../slices/userSlice";
+import { updateUserSid, updateUserInfo } from "../../slices/userSlice";
+
+import { getInfoUser } from "./loginedRequests";
 
 // Компоненты
 import NavBar from "./NavBar/NavBar";
@@ -14,13 +16,31 @@ export default function Logined(){
 
     // Для работы с состоянием
     const user = useSelector((state) => state.user);
+    const [userInfo, setUserInfo] = useState(null);     // Локальное состояние для запроса
     const dispatch = useDispatch();
 
-    // Если в состоянии нет сессии
-    if(user.sid === undefined){
-        // Берем сессию из куки и сохраняем в состояние
-        let sid = getCookie('sid');
+    const sid = getCookie('sid');         // Сессия из куки
+
+    // Первый рендоринг
+    useEffect(() => {
+
+        // Запрос данных с сервера
+        const fetchUserInfo = async () => {
+            // Отправляем сессию и ждем ответ
+            const response = await getInfoUser(sid);
+            // Передаем ответ в локальное состояние
+            setUserInfo(response);
+        }
+        fetchUserInfo();
+    }, []);
+    
+    
+    // Если в состоянии нет сессии и информации о пользователе
+    if(user.sid === undefined && userInfo != null){
+        // Сохраняем сессию в состояние
         dispatch(updateUserSid(sid))
+        // Сохраняем инф о пользователе в состояние
+        dispatch(updateUserInfo(userInfo))
     }
 
 
