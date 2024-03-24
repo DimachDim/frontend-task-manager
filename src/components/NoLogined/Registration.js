@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import RegValidator from "./Validators/RegValidator";
 
 import { useSelector, useDispatch } from 'react-redux';
-import { updateErrorText, updateSid } from '../../slices/userSlice';
+import { updateErrorText, updateUserInfo } from '../../slices/userSlice';
 
 export default function Registration(){
 
@@ -39,7 +39,7 @@ export default function Registration(){
                 <Form.Label>Повторите пароль</Form.Label>
                 <Form.Control type="password" placeholder="Password" ref={refRepeatPasword}/>
             </Form.Group>
-        
+
             <Button 
                 variant="primary" 
                 onClick={
@@ -51,7 +51,7 @@ export default function Registration(){
                         refRepeatPasword, 
 
                         (text)=>dispatch(updateErrorText(text)),    // Обнавляет текст ошибки
-                        (sid)=>dispatch(updateSid(sid))             // Обнавляет сессию
+                        (sid)=>dispatch(updateUserInfo(sid))             // Обнавляет сессию
                     )
                 }
             >

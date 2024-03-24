@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   // Сессия
   sid: undefined,
+  userId: undefined,
 
   error:{
     text: undefined
@@ -16,21 +17,23 @@ const userSlice = createSlice({
   initialState,     //Начальное состояние
   // Редьюсеры в слайсах меняют состояние и ничего не возвращают
   reducers: {
+    // Обнавляет информацию о пользователе
+    updateUserInfo: (state, action)=>{
+      state.sid = action.payload.sid
+      state.userId = action.payload.userId
+    },
+
     // Обнавляет текст ошибки
     updateErrorText: (state, action)=>{
       state.error.text = action.payload
     },
 
-    // Обнавляет сессию
-    updateSid: (state, action)=>{
-      state.sid = action.payload
-    }
   },
 });
 
 // Слайс генерирует действия, которые экспортируются отдельно
 // Действия генерируются автоматически из имен ключей редьюсеров
-export const { updateErrorText, updateSid } = userSlice.actions;
+export const { updateErrorText, updateUserInfo } = userSlice.actions;
 
 // По умолчанию экспортируется редьюсер, сгенерированный слайсом
 export default userSlice.reducer;

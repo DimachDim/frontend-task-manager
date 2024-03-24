@@ -3,7 +3,7 @@ import {CREATE_USER} from '../../../paths/LoginUrl'
 
 
 
-export default async function RegValidator(refToken, refUserName, refPassword, refRepeatPasword, actionErrorText, actionSid){
+export default async function RegValidator(refToken, refUserName, refPassword, refRepeatPasword, actionErrorText, updateUserInfo){
     
     // Достаем содержимое полей
     let token, userName, password, repeatPasword;
@@ -58,9 +58,9 @@ export default async function RegValidator(refToken, refUserName, refPassword, r
         actionErrorText(response.errorText)
     
     // Если пришла сессия    
-    }else if (response.sid != undefined) {
+    }else if (response.info != undefined) {
         // Передаем сессию в состояние
-        actionSid(response.sid);
+        updateUserInfo(response.info);
         // Убираем все сообщения об ошибке
         actionErrorText(undefined)
 

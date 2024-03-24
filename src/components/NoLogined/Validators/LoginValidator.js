@@ -1,6 +1,6 @@
 import { CREATE_SID } from "../../../paths/LoginUrl";
 
-export default async function LoginValidator(refUser, refPassword, actionErrorText, actionSid){
+export default async function LoginValidator(refUser, refPassword, actionErrorText, actionUserInfo){
     
     // Достаем содержимое полей
     let userName, password;
@@ -34,16 +34,15 @@ export default async function LoginValidator(refUser, refPassword, actionErrorTe
         .then(json => json ); 
 
 
-
     // Если пришел текст ошибки
     if(response.errorText != undefined){
         // Передать текст ошибки в состояние
         actionErrorText(response.errorText)
     
     // Если пришла сессия    
-    }else if (response.sid != undefined) {
+    }else if (response.info != undefined) {
         // Передаем сессию в состояние
-        actionSid(response.sid);
+        actionUserInfo(response.info);
         // Убираем все сообщения об ошибке
         actionErrorText(undefined)
     

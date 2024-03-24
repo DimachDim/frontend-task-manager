@@ -4,14 +4,13 @@ import Form from 'react-bootstrap/Form';
 import LoginValidator from "./Validators/LoginValidator";   // Валидатор формы
 
 import { useSelector, useDispatch } from 'react-redux';
-import { updateErrorText, updateSid } from '../../slices/userSlice';
+import { updateErrorText, updateUserInfo } from '../../slices/userSlice';
 
 
 
 export default function Login(){
 
     // Для работы с состоянием
-    const error = useSelector((state) => state.user.error);
     const dispatch = useDispatch();
     
     // Ссылки на поля формы
@@ -40,7 +39,7 @@ export default function Login(){
                         refPassword, 
                         
                         (text)=>dispatch(updateErrorText(text)),    // Обнавляет текст ошибки
-                        (sid)=>dispatch(updateSid(sid))             // Обнавляет сессию
+                        (info)=>dispatch(updateUserInfo(info))             // Обнавляет данные пользователя
                     )
                 }
             >

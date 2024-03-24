@@ -3,7 +3,7 @@ import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import getCookie from "../../functions/getCookie";
 
 import { useSelector, useDispatch } from "react-redux";
-import { updateSid } from "../../slices/userSlice";
+import { updateUserInfo } from "../../slices/userSlice";
 
 // Компоненты
 import NavBar from "./NavBar/NavBar";
@@ -20,10 +20,9 @@ export default function Logined(){
     if(user.sid === undefined){
         // Берем сессию из куки и сохраняем в состояние
         let sid = getCookie('sid');
-        dispatch(updateSid(sid))
+        dispatch(updateUserInfo(sid))
     }
 
-    console.log(user)
 
     return(
         <BrowserRouter>
