@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Navbar, Nav,  } from "react-bootstrap";
+import { Button, Navbar, Nav, NavDropdown} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
@@ -12,7 +12,23 @@ export default function NavBar(){
             <Navbar.Collapse>
                 
                 <Nav>
+                    {/* Создать задачу */}
                     <Nav.Link as={Link} to='/'>Создать задачу</Nav.Link>
+                    
+                    {/* Мои задачи */}
+                    <NavDropdown title="Мои задачи" id="basic-nav-dropdown" drop="up">
+                        <NavDropdown.Item as={Link} to="tasks/my-tasks">Созданые мной</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="tasks/assigned-me-tasks">Назначенные</NavDropdown.Item>
+                    </NavDropdown>
+
+                    {/* Пользователи */}
+                    <NavDropdown title="Пользователи" id="basic-nav-dropdown" drop="up">
+                        <NavDropdown.Item as={Link} to="users/invite">Пригласить пользователя</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="users/invited">Приглашенные пользователи</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="users/frends">Подписки</NavDropdown.Item>
+                    </NavDropdown>
+                    
+                    {/* Выход */}
                     <Nav.Link as={Link} to='/logout'>Выход</Nav.Link>
                 </Nav>
 
