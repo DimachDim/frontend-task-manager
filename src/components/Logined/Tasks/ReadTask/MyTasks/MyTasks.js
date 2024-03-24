@@ -1,25 +1,34 @@
 import React from "react";
+
 import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+
+import { getMyTasks } from "./myTasksRequest";
 
 export default function MyTasks(){
 
-    // Данные из состояния
+    // Для работы с состоянием
     const user = useSelector((state) => state.user);
+    const [arrTasks, setArrTasks] = useState([]);
 
-    /*
-    // Делаем запрос на сервер
-    let response = await fetch('http://taskmanager/tasks/my-tasks/' + user.userId, {
-        mode: 'cors',
-        method: 'get',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-        },
-    })  .then(resp => resp.json())
-    .then(json => json ); 
-    */
+    //Первый рендоринг
+    useEffect(()=>{
+        
+        // Объявляем асинх функц
+        async function getData(){
+            // Отправляем id на сервер
+            const response = await getMyTasks(user.userId)
+            // Сохраняем ответ в локальное состояние
+            setArrTasks(response) 
+        }
+        // Вызываем созданную функцию
+        getData()
+    }, [ user.userId])
+    
 
-    //console.log(user)
-
+    
+    console.log(arrTasks)
+    
     return(
         <>
             MyTasks
