@@ -1,4 +1,5 @@
 import React from "react";
+import './Tasks.css'
 
 import ContainerTask from './ContainerTask'
 
@@ -9,18 +10,33 @@ export default function ListTask(props){
 
     // Преобразование массива в массив компонентов
     arrComponentTasks = arrTasks.map((item, index) =>{
-        return <ContainerTask
-            key={index}
-            title={item.title}
-            text={item.text}
-            token={item.token}
-            userName={item.userName}
-        />
+
+        const strLen = 150; // Длинна текста
+        // Обрезаем текст
+        if(item.text.length > strLen){
+            item.text = item.text.substring(0, strLen)
+        }
+        
+
+        return (
+            <div className="col-sm-12 col-md-6 col-lg-3 mt-3"  key={index}>
+                <ContainerTask
+                    key={index}
+                    title={item.title}
+                    text={item.text}
+                    token={item.token}
+                    userName={item.userName}
+                />
+            </div>
+        )
     }) 
     
-    console.log(arrTasks)
 
     return(
-        arrComponentTasks
+        <div className="container list-task">
+            <div className="row">
+                {arrComponentTasks}
+            </div>
+        </div>
     )
 }

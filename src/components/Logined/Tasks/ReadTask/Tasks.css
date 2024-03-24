@@ -1,0 +1,15 @@
+.list-task{
+    margin-bottom: 100px;
+}
+
+.container-task-text{
+    overflow-y: auto;
+    height: 68%;
+    font-size:smaller;
+}
+
+.task-content .delete-btn{
+    position: 'absolute'; 
+    top: 0;
+    right: 0;
+}
