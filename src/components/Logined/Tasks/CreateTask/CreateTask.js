@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateErrorText } from "../../../slices/userSlice";
+import { updateErrorText } from "../../../../slices/userSlice";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';

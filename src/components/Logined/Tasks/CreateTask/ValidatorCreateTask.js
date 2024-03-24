@@ -1,4 +1,4 @@
-import { CREATE_TASK } from "../../../paths/Tasks";
+import { CREATE_TASK } from "../../../../paths/Tasks";
 
 export default async function validatorCreateTask(refTitle, refText, sid, actionErrorText, actionInpText){
 

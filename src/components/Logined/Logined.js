@@ -3,12 +3,12 @@ import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import getCookie from "../../functions/getCookie";
 
 import { useSelector, useDispatch } from "react-redux";
-import { updateUserInfo } from "../../slices/userSlice";
+import { updateUserSid } from "../../slices/userSlice";
 
 // Компоненты
 import NavBar from "./NavBar/NavBar";
-import CreateTask from "./CreateTask/CreateTask";
-import MyTasks from "./Tasks/ReadTask/MyTasks";
+import CreateTask from "./Tasks/CreateTask/CreateTask";
+import MyTasks from "./Tasks/ReadTask/MyTasks/MyTasks";
 
 export default function Logined(){
 
@@ -20,7 +20,7 @@ export default function Logined(){
     if(user.sid === undefined){
         // Берем сессию из куки и сохраняем в состояние
         let sid = getCookie('sid');
-        dispatch(updateUserInfo(sid))
+        dispatch(updateUserSid(sid))
     }
 
 

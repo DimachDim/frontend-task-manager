@@ -23,6 +23,11 @@ const userSlice = createSlice({
       state.userId = action.payload.userId
     },
 
+    // Обнавляет сессию
+    updateUserSid: (state, action)=>{
+      state.sid = action.payload
+    },
+
     // Обнавляет текст ошибки
     updateErrorText: (state, action)=>{
       state.error.text = action.payload
@@ -33,7 +38,7 @@ const userSlice = createSlice({
 
 // Слайс генерирует действия, которые экспортируются отдельно
 // Действия генерируются автоматически из имен ключей редьюсеров
-export const { updateErrorText, updateUserInfo } = userSlice.actions;
+export const { updateErrorText, updateUserInfo, updateUserSid } = userSlice.actions;
 
 // По умолчанию экспортируется редьюсер, сгенерированный слайсом
 export default userSlice.reducer;
