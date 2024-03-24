@@ -5,6 +5,7 @@ const initialState = {
   // Сессия
   sid: undefined,
   userId: undefined,
+  userName: undefined,
 
   error:{
     text: undefined
@@ -20,6 +21,7 @@ const userSlice = createSlice({
     // Обнавляет информацию о пользователе
     updateUserInfo: (state, action)=>{
       state.userId = action.payload.userInfo.userId
+      state.userName = action.payload.userInfo.userName
     },
 
     // Обнавляет сессию

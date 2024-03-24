@@ -1,17 +1,30 @@
 import React from "react";
 import CloseButton from 'react-bootstrap/CloseButton';
 
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 export default function ContainerTask(props){
 
     const text = props.text
+    const sid = useSelector((state) => state.user.sid);
 
+    // Первая отрисовка
+    useEffect(()=>{
+
+        // Отправка на сервер id задачи которую нужно удалить
+        async function deleteTask(){
+            await fetch()
+        }
+    })
+    
     return(
         <div className="card container-task" >
             <div className="card-body">
                 <div className="task-content" style={{height: '20rem'}}>   
 
                     {/* Кнопа удаления */}
-                    <CloseButton style={{position: 'absolute', top: 10, right: 10}} />
+                    <CloseButton style={{position: 'absolute', top: 10, right: 10}} onClick={()=>console.log('ok')}/>
 
                     {/* Заголовок */} 
                     <h5 className="card-title">{props.title}</h5>

@@ -44,7 +44,6 @@ export default function Logined(){
     }, [sid, user.sid]);
 
 
-
     return(
         <BrowserRouter>
             <NavBar/>

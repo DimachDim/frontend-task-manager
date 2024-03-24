@@ -10,18 +10,13 @@ export default function ListTask(props){
 
     // Преобразование массива в массив компонентов
     arrComponentTasks = arrTasks.map((item, index) =>{
-
-        const strLen = 150; // Длинна текста
-        // Обрезаем текст
-        if(item.text.length > strLen){
-            item.text = item.text.substring(0, strLen)
-        }
         
 
         return (
-            <div className="col-sm-12 col-md-6 col-lg-3 mt-3"  key={index}>
+            <div className="col-sm-12 col-md-6 col-lg-4 mt-3"  key={index}>
                 <ContainerTask
                     key={index}
+                    id={item.id}
                     title={item.title}
                     text={item.text}
                     token={item.token}
