@@ -23,24 +23,27 @@ export default function Logined(){
 
     // Первый рендоринг
     useEffect(() => {
-
         // Запрос данных с сервера
         const fetchUserInfo = async () => {
             // Отправляем сессию и ждем ответ
             const response = await getInfoUser(sid);
             // Передаем ответ в локальное состояние
             setUserInfo(response);
+    
+            // Проверим, получили ли мы ответ и есть ли текущий sid
+            if(response && !user.sid){
+                // Сохраняем сессию в состояние
+                dispatch(updateUserSid(sid));
+                // Сохраняем инфо о пользователе в состояние
+                dispatch(updateUserInfo(response));
+            }
         }
+    
         fetchUserInfo();
+        // Зависимость от sid и user.sid обеспечивает, что useEffect не будет вызываться множество раз
+    }, [sid, user.sid]);
 
-        // Если в состоянии нет сессии и информации о пользователе
-        if(user.sid === undefined && userInfo !== null){
-            // Сохраняем сессию в состояние
-            dispatch(updateUserSid(sid))
-            // Сохраняем инфо о пользователе в состояние
-            dispatch(updateUserInfo(userInfo))
-        }
-    }, [userInfo]);
+
 
     return(
         <BrowserRouter>

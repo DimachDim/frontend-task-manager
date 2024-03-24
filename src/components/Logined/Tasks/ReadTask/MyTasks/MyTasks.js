@@ -18,7 +18,7 @@ export default function MyTasks(){
     .then(json => json ); 
     */
 
-    console.log(user)
+    //console.log(user)
 
     return(
         <>
