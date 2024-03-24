@@ -16,8 +16,8 @@ export default function Logined(){
 
     // Для работы с состоянием
     const user = useSelector((state) => state.user);
-    const [userInfo, setUserInfo] = useState(null);     // Локальное состояние для запроса
     const dispatch = useDispatch();
+    const [userInfo, setUserInfo] = useState(null);     // Локальное состояние для запроса
 
     const sid = getCookie('sid');         // Сессия из куки
 
@@ -32,17 +32,15 @@ export default function Logined(){
             setUserInfo(response);
         }
         fetchUserInfo();
-    }, []);
-    
-    
-    // Если в состоянии нет сессии и информации о пользователе
-    if(user.sid === undefined && userInfo != null){
-        // Сохраняем сессию в состояние
-        dispatch(updateUserSid(sid))
-        // Сохраняем инф о пользователе в состояние
-        dispatch(updateUserInfo(userInfo))
-    }
 
+        // Если в состоянии нет сессии и информации о пользователе
+        if(user.sid === undefined && userInfo !== null){
+            // Сохраняем сессию в состояние
+            dispatch(updateUserSid(sid))
+            // Сохраняем инфо о пользователе в состояние
+            dispatch(updateUserInfo(userInfo))
+        }
+    }, [userInfo]);
 
     return(
         <BrowserRouter>
