@@ -11,6 +11,7 @@ import { getInfoUser } from "./loginedRequests";
 import NavBar from "./NavBar/NavBar";
 import CreateTask from "./Tasks/CreateTask/CreateTask";
 import MyTasks from "./Tasks/ReadTask/MyTasks/MyTasks";
+import InviteUser from './User/InviteUser/InviteUser';
 
 export default function Logined(){
 
@@ -50,6 +51,7 @@ export default function Logined(){
             <Routes>
                 <Route path="/" element={<CreateTask/>                  /* Создание задачи */}/>
                 <Route path="/tasks/my-tasks" element={<MyTasks/>       /* Мои задачи */}/>
+                <Route path="/users/invite" element={<InviteUser/>       /* Пригласить пользователя */}/>
                 <Route path="/logout" element={'Logout'}/>
             </Routes>
         </BrowserRouter>
