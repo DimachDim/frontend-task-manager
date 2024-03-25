@@ -21,6 +21,8 @@ export default function ListTask(props){
                     text={item.text}
                     token={item.token}
                     userName={item.userName}
+
+                    refreshPerent={props.refreshPerent    /* Функция обнавления */}
                 />
             </div>
         )

@@ -12,6 +12,7 @@ export default function MyTasks(){
     // Для работы с состоянием
     const user = useSelector((state) => state.user);
     const [arrTasks, setArrTasks] = useState([]);
+    const [refreshMyTasks, setRefreshMyTasks] = useState(0);
 
     //Первый рендоринг
     useEffect(()=>{
@@ -25,12 +26,14 @@ export default function MyTasks(){
         }
         // Вызываем созданную функцию
         getData()
-    }, [ user.userId])
+    }, [ user.userId, refreshMyTasks])
     
-    
+
     return(
         <>
-            <ListTask arrData={arrTasks}/>
+            <ListTask 
+                arrData={arrTasks   /* Массив данных */} 
+                refreshPerent={()=>setRefreshMyTasks(refreshMyTasks+1)     /* Функция обновления страницы */}/>
         </>
     )
 }

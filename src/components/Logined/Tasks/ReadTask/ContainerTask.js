@@ -8,16 +8,13 @@ export default function ContainerTask(props){
 
     const text = props.text
     const userName = useSelector((state) => state.user.userName);
-
-    // Первая отрисовка
-    useEffect(()=>{
-
-        // Отправка на сервер id задачи которую нужно удалить
-        async function deleteTask(){
-            await fetch()
-        }
-    })
-    console.log(userName)
+    
+    
+    // Отправка на сервер id задачи которую нужно удалить
+    async function deleteTask(){
+        await fetch('http://taskmanager/tasks/' + props.id,{method:'delete'})
+    }
+    
     return(
         <div className="card container-task" >
             <div className="card-body">
@@ -25,7 +22,13 @@ export default function ContainerTask(props){
 
                     {/* Кнопа удаления */}
                     {userName === props.userName 
-                        ? <CloseButton style={{position: 'absolute', top: 10, right: 10}} onClick={()=>console.log('ok')}/>
+                        ? <CloseButton 
+                            style={{position: 'absolute', top: 10, right: 10}} 
+                            onClick={
+                                ()=>{deleteTask()               // Удаляем задачу
+                                    .then(()=>props.refreshPerent() /* Перерисовываем страницу */)
+                                }
+                            }/>
                         : ''
                     }
 
