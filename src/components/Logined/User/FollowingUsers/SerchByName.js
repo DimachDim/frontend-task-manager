@@ -13,19 +13,19 @@ export default function SerchByName(props){
     // Перебираем массив в массив компонентов
     const usersComponents = props.users.map((item, index)=>{
         return(
-            <div key={item.id} className="list-group">
-                <UserItem 
+                <UserItem key={item.id}
                     userId={item.id}
                     userName ={item.username}
                 />
-            </div>
         )
     })
 
     return(
         <>
             <input defaultValue={''} className="form-control" ref={inp}  onChange={() => serchInput()}/>
-            {usersComponents}
+            <div className="list-group">
+                {usersComponents}
+            </div>
         </>
     )
 }

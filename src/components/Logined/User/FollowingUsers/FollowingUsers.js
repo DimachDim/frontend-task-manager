@@ -18,6 +18,8 @@ export default function FollowingUsers(){
     useEffect(()=>{
         // Если в строке поиска есть значение запрашиваем данные
         if(strinSerch != '') getArrData()
+        // Если строка пуста то удаляем все данные
+        if(strinSerch === '') setArrData([])
     },[strinSerch])
 
     //console.log('Строка поиска', strinSerch, 'Данныес сервера', arrData)
