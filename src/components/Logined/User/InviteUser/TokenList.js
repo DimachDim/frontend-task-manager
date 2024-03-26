@@ -6,22 +6,22 @@ export default function TokenList(props){
 
     // Проверка является ли переданный объект массивом
     if(Array.isArray(props.tokens)){
-
+        // Отзеркаливаем массив
+        props.tokens.reverse();
         // Перебираем массив токенов
-        const tokens = props.tokens.map((item, index)=>{
+        tokens = props.tokens.map((item, index)=>{
             return(
                 <div key={index}>
                     <div>{item.token}</div>
                     <div>{item.id_invited_user === null 
                             ? 'Пусто'
-                            : ''
+                            : item.name_invited_user
                         }
                     </div>
                 </div>
             )
         })
     }
-    
     return(
         <>
             {tokens}  

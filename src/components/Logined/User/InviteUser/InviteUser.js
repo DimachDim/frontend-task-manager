@@ -25,20 +25,20 @@ export default function InviteUser(){
                userId: user.userId,
                generateNew: flagGenerateNew
             })
-        }).then(resp => resp.json()).then(json => {setArrData(json); setToken(json.token)} ); 
+        }).then(resp => resp.json()).then(json => {setArrData(json);if(json.token!=null) setToken(json.token)} ); 
         
     }
 
     useEffect(()=>{
-        // Если в состоянии есть id пользователя то делаем запрос данных
-        if(user.userId != undefined) getArrData();
         // Устанавливаем флаг запроса нового токена в false
         setFlagGenerateNew(false)
+        // Если в состоянии есть id пользователя то делаем запрос данных
+        if(user.userId != undefined) getArrData();
     },[user, flagGenerateNew])
 
-
+    console.log(arrData)
     return(
-        <>
+        <div className="mb-5">
             {/* Генерация токена */}
             <TokenInput
                 token={token}
@@ -49,6 +49,6 @@ export default function InviteUser(){
             <TokenList
                 tokens={arrData.tokens  /* Список токенов */}
             />
-        </>
+        </div>
     )
 }
