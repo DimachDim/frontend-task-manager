@@ -17,7 +17,7 @@ export default function InviteUser(){
     
     // Запрос данных с сервера
     async function getArrData(){
-        return await fetch('http://taskmanager/invite-tokens',{
+        await fetch('http://taskmanager/invite-tokens',{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
