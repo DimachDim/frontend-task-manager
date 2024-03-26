@@ -33,7 +33,7 @@ export default function UserItem(props){
     return(
         <div className='list-group-item'>
             {props.userName}
-            
+
             {/* Подписан на вас или нет */}
             {frendFlag2
                 ?'Подписан на вас'

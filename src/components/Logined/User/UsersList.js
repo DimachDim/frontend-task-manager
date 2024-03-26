@@ -3,18 +3,24 @@ import UserItem from "./UserItem";
 
 export default function UsersList(props){
 
-    // Перебираем массив 
-    const usresComp = props.users.map((item, index)=>{
-        return(
-            <UserItem 
-                key={index}
-                userId={item.userId} 
-                userName={item.userName}
-            />
-        )
-    })
+    let usresComp;
 
-    console.log('props', props)
+    // Если является массивом
+    if(Array.isArray(props.users)){
+
+        // Перебираем массив 
+        usresComp = props.users.map((item, index)=>{
+            return(
+                <UserItem 
+                    key={index}
+                    userId={item.userId} 
+                    userName={item.userName}
+                />
+            )
+        })
+    }
+
+
     return(
         <div className="container mt-5">
             <div className="row">
