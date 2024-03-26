@@ -25,7 +25,7 @@ export default function NavBar(){
                     <NavDropdown title="Пользователи" id="basic-nav-dropdown" drop="up">
                         <NavDropdown.Item as={Link} to="users/invite">Пригласить пользователя</NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="users/invited">Приглашенные пользователи</NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to="users/frends">Подписки</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="users/following">Подписки</NavDropdown.Item>
                     </NavDropdown>
                     
                     {/* Выход */}
