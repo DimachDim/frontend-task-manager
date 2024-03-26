@@ -20,7 +20,7 @@ export default function FollowingUsers(){
         if(strinSerch != '') getArrData()
     },[strinSerch])
 
-    console.log('Строка поиска', strinSerch, 'Данныес сервера', arrData)
+    //console.log('Строка поиска', strinSerch, 'Данныес сервера', arrData)
     return(
         <div className="container mt-5">
             <div className="row">

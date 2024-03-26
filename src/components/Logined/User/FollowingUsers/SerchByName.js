@@ -13,13 +13,12 @@ export default function SerchByName(props){
     // Перебираем массив в массив компонентов
     const usersComponents = props.users.map((item, index)=>{
         return(
-            <div key={index} className="list-group">
+            <div key={item.id} className="list-group">
                 <UserItem 
                     userId={item.id}
                     userName ={item.username}
-               />
+                />
             </div>
-            
         )
     })
 
