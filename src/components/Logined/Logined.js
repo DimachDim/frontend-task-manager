@@ -29,20 +29,20 @@ export default function Logined(){
             // Отправляем сессию и ждем ответ
             const response = await getInfoUser(sid);
             // Передаем ответ в локальное состояние
-            setUserInfo(response);
+            setUserInfo(response.info);
     
             // Проверим, получили ли мы ответ и есть ли текущий sid
             if(response && !user.sid){
                 // Сохраняем сессию в состояние
                 dispatch(updateUserSid(sid));
                 // Сохраняем инфо о пользователе в состояние
-                dispatch(updateUserInfo(response));
+                dispatch(updateUserInfo(response.info));
             }
         }
     
         fetchUserInfo();
         // Зависимость от sid и user.sid обеспечивает, что useEffect не будет вызываться множество раз
-    }, [sid, user.sid]);
+    }, [sid, user]);
 
 
     return(
