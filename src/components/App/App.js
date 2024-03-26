@@ -22,6 +22,7 @@ function App() {
     alert(user.error.text)
   }
 
+  
   // Если в состоянии появляется сессия
   if(user.sid != undefined ){
     // Сохраняем сессию в куки

@@ -20,8 +20,9 @@ const userSlice = createSlice({
   reducers: {
     // Обнавляет информацию о пользователе
     updateUserInfo: (state, action)=>{
-      state.userId = action.payload.userInfo.userId
-      state.userName = action.payload.userInfo.userName
+      state.sid = action.payload.sid
+      state.userId = action.payload.userId
+      state.userName = action.payload.userName
     },
 
     // Обнавляет сессию
