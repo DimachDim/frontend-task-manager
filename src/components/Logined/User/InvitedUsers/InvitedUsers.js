@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import UsersList from "../UsersList";
 
 export default function InvitedUsers(){
 
@@ -21,10 +22,9 @@ export default function InvitedUsers(){
     },[userId])
 
 
-    console.log('id',userId, 'Данные', arrData, )
     return(
         <>
-            InvitedUsers
+            <UsersList users={arrData}/>
         </>
     )
 }
