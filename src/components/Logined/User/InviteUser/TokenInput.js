@@ -5,9 +5,9 @@ export default function TokenInput(props){
     const valueInput = props.token != null ? props.token : '';
 
     return(
-        <>
-            <input value={valueInput} readOnly />
-            <button onClick={()=>props.generateToken(true)}>Сгенерировать Токен</button>
-        </>
+        <div className="tokens-input">
+            <input value={valueInput} readOnly className="form-control"/>
+            <button onClick={()=>props.generateToken(true)} className='btn btn-primary'>Сгенерировать Токен</button>
+        </div>
     )
 }

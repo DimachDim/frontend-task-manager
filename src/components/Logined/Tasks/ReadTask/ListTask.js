@@ -10,8 +10,7 @@ export default function ListTask(props){
 
     // Преобразование массива в массив компонентов
     arrComponentTasks = arrTasks.map((item, index) =>{
-        
-
+    
         return (
             <div className="col-sm-12 col-md-6 col-lg-4 mt-3"  key={index}>
                 <ContainerTask

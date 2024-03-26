@@ -1,0 +1,33 @@
+.invite-user{
+    max-width: 60%;
+    padding-top: 50px;
+}
+
+.tokens-input{
+    margin-bottom: 50px;
+}
+
+
+.tokens-input input{
+    margin-bottom: 20px;
+}
+
+.list-group{
+    margin-bottom: 70px;
+}
+
+.list-group-item{
+    display: flex;
+}
+
+.list-group-item div{
+    flex-grow: 1;
+}
+
+.list-group-item-token{
+
+}
+
+.list-group-item-user{
+    text-align: right;
+}

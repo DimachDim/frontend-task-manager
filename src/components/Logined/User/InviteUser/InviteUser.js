@@ -1,4 +1,5 @@
 import React from "react";
+import './InviteTokens.css'
 
 // Компанента
 import TokenInput from "./TokenInput";
@@ -38,17 +39,21 @@ export default function InviteUser(){
 
     console.log(arrData)
     return(
-        <div className="mb-5">
+        <div className="container invite-user">
+            <div className="row">
+
             {/* Генерация токена */}
             <TokenInput
                 token={token}
                 generateToken={(flag)=>{setFlagGenerateNew(flag)}}
-            />
+           />
 
             {/* Список токенов */}
             <TokenList
                 tokens={arrData.tokens  /* Список токенов */}
             />
+
+            </div>
         </div>
     )
 }

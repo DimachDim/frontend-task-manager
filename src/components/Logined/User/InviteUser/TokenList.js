@@ -11,10 +11,10 @@ export default function TokenList(props){
         // Перебираем массив токенов
         tokens = props.tokens.map((item, index)=>{
             return(
-                <div key={index}>
-                    <div>{item.token}</div>
-                    <div>{item.id_invited_user === null 
-                            ? 'Пусто'
+                <div key={index} className='list-group-item'>
+                    <div className="list-group-item-token">{item.token}</div>
+                    <div className="list-group-item-user">{item.id_invited_user === null 
+                            ? <p style={{color:'grey'}}>Пусто</p>
                             : item.name_invited_user
                         }
                     </div>
@@ -23,8 +23,13 @@ export default function TokenList(props){
         })
     }
     return(
-        <>
+        <div className="list-group">
+            <div style={{fontWeight: 'bold'}} className="list-group-item">
+                <div>Токен</div>
+                <div className="list-group-item-user">Пользователь</div>
+            </div>
+
             {tokens}  
-        </>
+        </div>
     )
 }
