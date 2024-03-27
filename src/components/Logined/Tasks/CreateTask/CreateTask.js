@@ -12,6 +12,7 @@ import 'react-quill/dist/quill.snow.css'; // импорт стилей Quill
 
 import validatorCreateTask from "./ValidatorCreateTask";
 import Select from "./Select";
+import Dates from "./Dates";
 
 
 
@@ -22,7 +23,8 @@ export default function CreateTask(){
     const [text, setText] = useState("")                    // Текст
     const handleChange = value => setText(value)            // При вводе текста меняем состояние
     const [performerId, setPerformerId] = useState(0)       // id исполнителя задачи
-
+    const [startDate, setStartDate] = useState('')          // Дата начала задачи
+    const [endDate, setEndDate] = useState('')              // Дата конца задачи
 
     // redux
     const sid = useSelector((state) => state.user.sid);     // Сессия пользователя
@@ -56,6 +58,8 @@ export default function CreateTask(){
         setTitle('')
         setText('')
         setPerformerId(0)
+        setStartDate('')
+        setEndDate('')
     }
 
     useEffect(()=>{
@@ -70,7 +74,7 @@ export default function CreateTask(){
     },[userId, userList])
 
 
-    console.log('Заголовок', title, 'Текст', text, 'Исполнитель', performerId)
+    console.log(startDate, endDate)
     return(
         <Form className="mx-lg-5 create-task-form">
 
@@ -113,16 +117,19 @@ export default function CreateTask(){
                 onPerformer={(id)=>setPerformerId(id)}
             />
 
+            {/* Установка даты */}
+            <Dates
+                startDate={startDate}
+                endDate={endDate}
+                setStartDate={(e)=>setStartDate(e)}
+                setEndDate={(e)=>setEndDate(e)}
+            />
+
             {/* Кнопка сохранить */}
             <Button 
                 variant="primary" 
                 onClick={
-                    ()=>validatorCreateTask(
-                        // Передаем информацию
-                        title,
-                        text,
-                        performerId,
-                        sid,            // Сессия
+                    ()=>validatorCreateTask(title,text,performerId,startDate,endDate,sid,
                         // Функция передачи текста ошибки
                         (text)=> dispatch(updateErrorText(text)),
                         // Функция очищает поля
