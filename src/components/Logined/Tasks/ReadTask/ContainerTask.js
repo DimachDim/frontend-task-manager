@@ -18,13 +18,13 @@ export default function ContainerTask(props){
         await fetch('http://taskmanager/tasks/' + props.id,{method:'delete'})
     }
     
-
+    console.log(props)
     return(
         <div className="card container-task" onClick={()=>navigate('/tasks/task/'+taskId)}>
             <div className="card-body">
                 <div className="task-content" style={{height: '20rem'}}>   
 
-                    {/* Кнопа удаления */}
+                    {/* Кнопа удаления. (появится если эту задачу создал текущий пользователь)*/}
                     {userName === props.userName 
                         ? <CloseButton 
                             style={{position: 'absolute', top: 10, right: 10}} 
@@ -48,7 +48,7 @@ export default function ContainerTask(props){
                     <p className="card-text">Token: {props.token}</p>
                     
                     {/* Имя создателя */}
-                    <p className="card-text">User Name: {props.userName}</p>
+                    <p className="card-text">Создатель задачи: {props.userName}</p>
                 </div>
             </div>
         </div>
