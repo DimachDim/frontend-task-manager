@@ -3,6 +3,8 @@ import ListTask from "../ListTask";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
+import { TASKS_PENDING_TASKS } from "../../../../../paths/Tasks";
+
 export default function PendingTasks(){
 
     // Для работы с состоянием
@@ -12,7 +14,7 @@ export default function PendingTasks(){
 
     // Функция запрашивает задачи назначеные пользователю
     async function getData(){
-        await fetch('http://taskmanager/tasks/pending-tasks/' + userId,{method:'get'})
+        await fetch(TASKS_PENDING_TASKS + userId,{method:'get'})
         .then(resp => resp.json()).then(json => setArrTasks(json) ); 
     }
 

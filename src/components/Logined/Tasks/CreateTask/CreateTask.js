@@ -14,7 +14,7 @@ import validatorCreateTask from "./ValidatorCreateTask";
 import Select from "./Select";
 import Dates from "./Dates";
 
-
+import { USERS_GET_INVITED, USERS_GET_MY_FOLLOWERS, USERS_GET_MY_SUBS } from "../../../../paths/Users";
 
 export default function CreateTask(){
 
@@ -22,7 +22,7 @@ export default function CreateTask(){
     const [title, setTitle] = useState('')                  // Заголовок
     const [text, setText] = useState("")                    // Текст
     const handleChange = value => setText(value)            // При вводе текста меняем состояние
-    const [executorId, setExecutorId] = useState(0)       // id исполнителя задачи
+    const [executorId, setExecutorId] = useState(0)         // id исполнителя задачи
     const [startDate, setStartDate] = useState('')          // Дата начала задачи
     const [endDate, setEndDate] = useState('')              // Дата конца задачи
 
@@ -37,19 +37,19 @@ export default function CreateTask(){
 
     // Запрос приглашенных пользователей
     async function getInviteUsers(){
-        await fetch('http://taskmanager/users/get-invited/' + userId,{method: 'get'})
+        await fetch(USERS_GET_INVITED + userId,{method: 'get'})
         .then(resp => resp.json()).then(json => setArrData(json) );
     }
 
     // Запрос моих подписчиков
     async function getMyFollowers(){
-        await fetch('http://taskmanager/followers/get-my-followers/' + userId,{method: 'get'})
+        await fetch(USERS_GET_MY_FOLLOWERS + userId,{method: 'get'})
         .then(resp => resp.json()).then(json => setArrData(json) );
     }
 
     // Запрос на кого подписан пользователь
     async function getMySubscriptions(){
-        await fetch('http://taskmanager/followers/get-my-subscriptions/' + userId,{method: 'get'})
+        await fetch(USERS_GET_MY_SUBS + userId,{method: 'get'})
         .then(resp => resp.json()).then(json => setArrData(json) );
     }
 

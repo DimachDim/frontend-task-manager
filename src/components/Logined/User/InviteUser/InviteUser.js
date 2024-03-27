@@ -1,5 +1,6 @@
 import React from "react";
 import './InviteTokens.css'
+import { USERS_INVITE_TOKENS } from "../../../../paths/Users";
 
 // Компанента
 import TokenInput from "./TokenInput";
@@ -15,9 +16,9 @@ export default function InviteUser(){
     const [token, setToken] = useState(undefined)                       // Если токен придет он сохранится сюда
     const user = useSelector((state) => state.user)
     
-    // Запрос данных с сервера
+    // Запрос данных с сервера. Создание нового токена приглашения
     async function getArrData(){
-        await fetch('http://taskmanager/invite-tokens',{
+        await fetch(USERS_INVITE_TOKENS,{
             method: 'post',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',

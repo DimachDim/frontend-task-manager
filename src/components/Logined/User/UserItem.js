@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, UseSelector } from "react-redux";
 import './Style.css'
+import { USERS_FOLLOWERS_YES_NO, USERS_FOLLOWERS, USERS_FOLLOWERS_POST } from "../../../paths/Users";
 
 
 export default function UserItem(props){
@@ -15,9 +16,9 @@ export default function UserItem(props){
     
     const [idRecord, setIdRecord] = useState(null)              // id записи в базе
 
-    // Запрашивает данные с сервера
+    // Запрашивает подписан пользователь на вас или нет и подписаны ли вы на него
     async function getArrData(){
-        await fetch('http://taskmanager/followers/yes-no/' + userId1 +'/'+ userId2, {method:'get'})
+        await fetch(USERS_FOLLOWERS_YES_NO + userId1 +'/'+ userId2, {method:'get'})
         .then(resp => resp.json())
         .then(json => {
             setArrData(json)                    // Сохраняем данные
@@ -32,14 +33,14 @@ export default function UserItem(props){
     // Обработка клика ОТПИСАТЬСЯ
     async function clickUnsubscribe(){
         
-        await fetch('http://taskmanager/followers/' + idRecord,{method:'delete'})
+        await fetch(USERS_FOLLOWERS + idRecord,{method:'delete'})
             .then(resp => resp.json())
             .then(json => setFrendFlag(json.youFollow));
     }
 
     // Обработка клика ПОДПИСАТЬСЯ
     async function clickSubscribe(){
-        await fetch('http://taskmanager/followers',{
+        await fetch(USERS_FOLLOWERS_POST,{
             method:'post',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',

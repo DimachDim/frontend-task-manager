@@ -1,7 +1,9 @@
+import { USERS_GET_INFO } from "../../paths/Users";
+
 
 export async function getInfoUser(sid){
     
-    let response = await fetch('http://taskmanager/users/get-info/' + sid, {
+    let response = await fetch(USERS_GET_INFO + sid, {
         mode: 'cors',
         method: 'get',
     })

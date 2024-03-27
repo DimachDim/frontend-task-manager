@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { DELETE_TASK } from "../../../../paths/Tasks";
+
 export default function ContainerTask(props){
 
     const text = props.text
@@ -15,7 +17,7 @@ export default function ContainerTask(props){
     
     // Отправка на сервер id задачи которую нужно удалить
     async function deleteTask(){
-        await fetch('http://taskmanager/tasks/' + props.id,{method:'delete'})
+        await fetch(DELETE_TASK + props.id,{method:'delete'})
     }
     
     console.log(props)

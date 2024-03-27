@@ -6,6 +6,7 @@ import { useSelector, UseSelector } from "react-redux";
 import SerchByName from "./SerchByName";
 import UsersList from "../UsersList";
 
+import { USERS_SERCH_NAME, USERS_GET_MY_SUBS, USERS_GET_MY_FOLLOWERS } from "../../../../paths/Users";
 
 export default function FollowingUsers(){
 
@@ -22,21 +23,21 @@ export default function FollowingUsers(){
 
     // Для запроса данных по строке поиска
     async function getArrData(){
-        await fetch('http://taskmanager/users/serch-name/' + strinSerch,{
+        await fetch(USERS_SERCH_NAME + strinSerch,{
             method: 'get',
         }).then(resp => resp.json()).then(json => {setArrData(json);} ); 
     }
 
     // Для запроса на кого подписан пользователь
     async function getArrMySubs(){
-        await fetch('http://taskmanager/followers/get-my-subscriptions/' + userId,{
+        await fetch(USERS_GET_MY_SUBS + userId,{
             method:'get'
         }).then(resp => resp.json()).then(json => {setArrMySubs(json);}); 
     }
 
     // Для запроса подписчиков
     async function getArrMyFollowers(){
-        await fetch('http://taskmanager/followers/get-my-followers/' + userId,{
+        await fetch(USERS_GET_MY_FOLLOWERS + userId,{
             method:'get'
         }).then(resp => resp.json()).then(json => {setArrMyFollowers(json);}); 
     }

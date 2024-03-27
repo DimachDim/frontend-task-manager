@@ -3,15 +3,17 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import UsersList from "../UsersList";
 
+import { USERS_GET_INVITED } from "../../../../paths/Users";
+
 export default function InvitedUsers(){
 
     const userId = useSelector((state)=>state.user.userId)  // id текущего пользователя
     const [arrData, setArrData] = useState([])              // будет хранить данные с сервера
 
 
-    // Функция запрашивает данные и обновляет состояние
+    // Функция запрашивает пользователей которых вы пригласили
     async function getArrData(){
-        return await fetch('http://taskmanager/users/get-invited/' + userId,{
+        return await fetch(USERS_GET_INVITED + userId,{
             method: 'get',
         }).then(resp => resp.json()).then(json => {setArrData(json);} ); 
     }

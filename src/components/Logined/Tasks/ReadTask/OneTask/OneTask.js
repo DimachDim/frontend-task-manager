@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import './Style.css'
 
+import { TASKS_GET_TASK, TASKS_UPDATE_TASK, TASKS_DELETE_TASK } from "../../../../../paths/Tasks";
+
 export default function OneTask(props){
     
     const {id} = useParams();                               // id переданной задачи
@@ -13,13 +15,13 @@ export default function OneTask(props){
 
     // Запрос задачи с сервера
     async function getTask(){
-        await fetch('http://taskmanager/tasks/'+id,{method:'get'})
+        await fetch(TASKS_GET_TASK+id,{method:'get'})
         .then(resp => resp.json()).then(json => setArrData(json) ); 
     }
 
     // Функция изменяет статус задачи
     async function updateTask(status){
-        await fetch('http://taskmanager/tasks/' + id,{
+        await fetch(TASKS_UPDATE_TASK + id,{
             method:'put',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
@@ -34,7 +36,7 @@ export default function OneTask(props){
 
     // Функция удаляет задачу
     async function deleteTask(){
-        await fetch('http://taskmanager/tasks/' + id,{method:'delete'})
+        await fetch(TASKS_DELETE_TASK + id,{method:'delete'})
         // Переходим назад по истории
         navigate(-1)
     }
