@@ -15,14 +15,17 @@ export default function Select(props){
     
 
     return(
-        <div>
+        <div className="select">
+            
+            <p>Выберите исполнителя</p>
             <select 
+                
                 className="form-select"  
                 value={value} 
                 onChange={(e)=>onExecutor(e.target.value)}
             >
             
-                <option value={0}></option>
+                <option value={0}>Выберите исполнителя</option>
                 {arrUsersComp}
             </select>
         </div>

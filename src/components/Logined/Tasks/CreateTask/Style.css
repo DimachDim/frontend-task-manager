@@ -3,3 +3,56 @@
     margin-top: 50px;
     margin-bottom: 150px;
 }
+
+/* Выбор списка  */
+.why-list{
+    margin-top: 80px;
+}
+/* Надпись над выбором списка */
+.why-list p{
+    text-align: center;
+    font-size: 16pt;
+    border-bottom: 1px solid blue;
+}
+/* Блок с чекбоксами */
+.why-list>div{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 14pt;
+    text-align: center;
+}
+
+
+/* Строка выбора */
+.select{
+    margin-top: 50px;
+}
+/* Надпись */
+.select p{
+    text-align: center;
+    font-size: 16pt;
+    border-bottom: 1px solid blue;
+}
+/* Поле выбора */
+.select select{
+    max-width: 500px;
+    margin: auto;
+}
+
+
+
+/* Блок с датами */
+.dates{
+    margin-top: 50px;
+}
+/* Надпись */
+.dates p{
+    text-align: center;
+    font-size: 16pt;
+    border-bottom: 1px solid blue;
+}
+/* Контейнеры с выбором даты */
+.dates div{
+    text-align: center;
+    margin-bottom: 20px;
+}

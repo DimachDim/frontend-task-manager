@@ -10,13 +10,14 @@ export default function Dates(props){
 
 
     return(
-        <div>
+        <div className="dates">
+            <p>Установите даты</p>
             <div>
-                <label>Дата начала</label>
+                <label>Дата начала: </label>
                 <input type='date' value={startDate} onChange={(e)=>setStartDate(e.target.value)}/>
             </div>
             <div>
-                <label>Дата окончания</label>
+                <label>Дата окончания: </label>
                 <input type='date' value={endDate} onChange={(e)=>setEndDate(e.target.value)}/>
             </div>
         </div>

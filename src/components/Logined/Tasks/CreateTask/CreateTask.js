@@ -96,18 +96,22 @@ export default function CreateTask(){
             </Form.Group>
 
             {/* Выбор в каком списке искать */}
-            <p>Из какого списка выбирать исполнителя?</p>
-            <div>
-                <input type='radio' name='users-list' value='invited' onChange={(e)=>setUserList(e.target.value)}/>
-                <label>Приглашенные пользователи</label>
-            </div>
-            <div>
-                <input type='radio'name='users-list' value='followers' onChange={(e)=>setUserList(e.target.value)}/>
-                <label>Мои подписчики</label>
-            </div>
-            <div>
-                <input type='radio'name='users-list' value='subscriptions' onChange={(e)=>setUserList(e.target.value)}/>
-                <label>На кого подписан я</label>
+            <div className="why-list">   
+                <p>Из какого списка выбирать исполнителя?</p>
+                <div>
+                    <div>
+                        <input className="form-check-input" type='radio' name='users-list' value='invited' onChange={(e)=>setUserList(e.target.value)}/>
+                        <label>Приглашенные пользователи</label>
+                    </div>
+                    <div>
+                        <input className="form-check-input" type='radio'name='users-list' value='followers' onChange={(e)=>setUserList(e.target.value)}/>
+                        <label>Мои подписчики</label>
+                    </div>
+                    <div>
+                        <input className="form-check-input" type='radio'name='users-list' value='subscriptions' onChange={(e)=>setUserList(e.target.value)}/>
+                        <label>На кого подписан я</label>
+                    </div>
+                </div>
             </div>
 
             {/* Выбор исполнителя */}
