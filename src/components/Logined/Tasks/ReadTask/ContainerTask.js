@@ -18,7 +18,7 @@ export default function ContainerTask(props){
         await fetch('http://taskmanager/tasks/' + props.id,{method:'delete'})
     }
     
-    console.log(props)
+
     return(
         <div className="card container-task" onClick={()=>navigate('/tasks/task/'+taskId)}>
             <div className="card-body">

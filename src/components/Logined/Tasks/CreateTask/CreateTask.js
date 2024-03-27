@@ -22,7 +22,7 @@ export default function CreateTask(){
     const [title, setTitle] = useState('')                  // Заголовок
     const [text, setText] = useState("")                    // Текст
     const handleChange = value => setText(value)            // При вводе текста меняем состояние
-    const [performerId, setPerformerId] = useState(0)       // id исполнителя задачи
+    const [executorId, setExecutorId] = useState(0)       // id исполнителя задачи
     const [startDate, setStartDate] = useState('')          // Дата начала задачи
     const [endDate, setEndDate] = useState('')              // Дата конца задачи
 
@@ -57,7 +57,7 @@ export default function CreateTask(){
     function cleanData(){
         setTitle('')
         setText('')
-        setPerformerId(0)
+        setExecutorId(0)
         setStartDate('')
         setEndDate('')
     }
@@ -113,8 +113,8 @@ export default function CreateTask(){
             {/* Выбор исполнителя */}
             <Select
                 users={arrData}
-                value={performerId}
-                onPerformer={(id)=>setPerformerId(id)}
+                value={executorId}
+                onExecutor={(id)=>setExecutorId(id)}
             />
 
             {/* Установка даты */}
@@ -129,7 +129,7 @@ export default function CreateTask(){
             <Button 
                 variant="primary" 
                 onClick={
-                    ()=>validatorCreateTask(title,text,performerId,startDate,endDate,sid,
+                    ()=>validatorCreateTask(title,text,executorId,startDate,endDate,sid,
                         // Функция передачи текста ошибки
                         (text)=> dispatch(updateErrorText(text)),
                         // Функция очищает поля

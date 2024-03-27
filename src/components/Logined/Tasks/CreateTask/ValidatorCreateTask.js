@@ -1,6 +1,6 @@
 import { CREATE_TASK } from "../../../../paths/Tasks";
 
-export default async function validatorCreateTask(title, text, performerId, startDate, endDate, sid, actionErrorText, cleanData){
+export default async function validatorCreateTask(title, text, executorId, startDate, endDate, sid, actionErrorText, cleanData){
 
 
     // Проверяем на пустоту
@@ -13,7 +13,7 @@ export default async function validatorCreateTask(title, text, performerId, star
             actionErrorText('Укажите текст задачи!')
             return
 
-        case (performerId === 0):
+        case (executorId === 0):
             actionErrorText('Укажите исполнителя')
             return
 
@@ -36,7 +36,7 @@ export default async function validatorCreateTask(title, text, performerId, star
         body: JSON.stringify({
             title: title,
             text: text,
-            performerId: performerId,
+            executorId: executorId,
             startDate: startDate,
             endDate: endDate,
             sid: sid
