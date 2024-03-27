@@ -23,14 +23,23 @@ export default function UserItem(props){
         });
     }
 
+    // Обработка клика ОТПИСАТЬСЯ
+    async function clickUnsubscribe(){
+        
+        const idRecord = arrData.idRecord    // id записи в базе
+        await fetch('http://taskmanager/followers/' + idRecord,{method:'delete'})
+            .then(resp => resp.json())
+            .then(json => setFrendFlag(json.youFollow));
+    }
+
     useEffect(()=>{
         // Если данных нет Запрашиваем данные с сервера
         if(arrData === null){
             getArrData();
         }
-    },[arrData])
+    },[arrData,frendFlag])
     
-
+    console.log(arrData)
     return(
         <div className='list-group-item'>
             <div>
@@ -48,7 +57,7 @@ export default function UserItem(props){
             {/* Кнопка подписаться */}
             <div>
                 {frendFlag
-                    ?<button className="btn btn-danger">Отписаться</button>
+                    ?<button className="btn btn-danger" onClick={()=>clickUnsubscribe()}>Отписаться</button>
                     :<button className="btn btn-success">Подписаться</button>
                 } 
             </div>

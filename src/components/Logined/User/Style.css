@@ -12,7 +12,7 @@
 .list-group-item div:nth-child(2){
     text-align: right;
     color: grey;
-
+    font-size: 10pt;
 }
 .list-group-item div:nth-child(3){
     text-align: center;    
