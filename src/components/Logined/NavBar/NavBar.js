@@ -1,9 +1,12 @@
 import React from "react";
 import { Button, Navbar, Nav, NavDropdown} from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 
 export default function NavBar(){
+
+    const userName = useSelector((state)=>state.user.userName)      // Имя пользователя
+
     return(
     
         <Navbar collapseOnSelect expand='md' bg='dark' variant='dark' fixed='bottom'>
@@ -30,6 +33,8 @@ export default function NavBar(){
                     
                     {/* Выход */}
                     <Nav.Link as={Link} to='/logout'>Выход</Nav.Link>
+
+                    <span   style={{marginLeft: "10px", color: "#5cb85c"}}>User name: {userName}</span>
                 </Nav>
 
             </Navbar.Collapse>
