@@ -29,7 +29,9 @@ export default function ContainerTask(props){
                         ? <CloseButton 
                             style={{position: 'absolute', top: 10, right: 10}} 
                             onClick={
-                                ()=>{deleteTask()               // Удаляем задачу
+                                (e)=>{
+                                    e.stopPropagation()         // Для срабатывания удаления игнорируюя нажатие на карточку задачи
+                                    deleteTask()                // Удаляем задачу
                                     .then(()=>props.refreshPerent() /* Перерисовываем страницу */)
                                 }
                             }/>
