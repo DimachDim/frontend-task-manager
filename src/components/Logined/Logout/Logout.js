@@ -9,10 +9,10 @@ export default function Logout(){
 
     // обработка клика Ок
     function clickOk(){
-        // Удаляем все куки
-        deleteAllCookies()
         // Очищаем адресную строку
         navigate('/')
+        // Удаляем все куки
+        deleteAllCookies()
         // Перезагружаем страницу
         document.location.reload(true);
     }
