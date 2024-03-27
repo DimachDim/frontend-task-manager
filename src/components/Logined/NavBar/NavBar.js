@@ -18,7 +18,7 @@ export default function NavBar(){
                     {/* Мои задачи */}
                     <NavDropdown title="Мои задачи" id="basic-nav-dropdown" drop="up">
                         <NavDropdown.Item as={Link} to="tasks/my-tasks">Созданые мной</NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to="tasks/assigned-me-tasks">Назначенные</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="tasks/pending-tasks">Назначенные</NavDropdown.Item>
                     </NavDropdown>
 
                     {/* Пользователи */}

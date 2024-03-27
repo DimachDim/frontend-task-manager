@@ -11,6 +11,7 @@ import { getInfoUser } from "./loginedRequests";
 import NavBar from "./NavBar/NavBar";
 import CreateTask from "./Tasks/CreateTask/CreateTask";
 import MyTasks from "./Tasks/ReadTask/MyTasks/MyTasks";
+import PendingTasks from './Tasks/ReadTask/PendingTasks/PendingTasks';
 import OneTask from './Tasks/ReadTask/OneTask/OneTask';
 import InviteUser from './User/InviteUser/InviteUser';
 import InvitedUsers from './User/InvitedUsers/InvitedUsers';
@@ -54,7 +55,8 @@ export default function Logined(){
             <NavBar/>
             <Routes>
                 <Route path="/" element={<CreateTask/>                          /* Создание задачи */}/>
-                <Route path="/tasks/my-tasks" element={<MyTasks/>               /* Мои задачи */}/>
+                <Route path="/tasks/my-tasks" element={<MyTasks/>               /* Задачи созданые мной */}/>
+                <Route path="/tasks/pending-tasks" element={<PendingTasks/>     /* Задачи назначенные мне */}/>
                 <Route path="/tasks/task/:id" element={<OneTask/>               /* Одна задача */}/>
                 <Route path="/users/invite" element={<InviteUser/>              /* Пригласить пользователя */}/>
                 <Route path="/users/invited" element={<InvitedUsers/>           /* Приглашенные пользователи */}/>
