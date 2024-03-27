@@ -22,7 +22,14 @@ export default function SerchByName(props){
 
     return(
         <>
-            <input defaultValue={''} className="form-control" ref={inp}  onChange={() => serchInput()}/>
+            <input 
+                defaultValue={''} 
+                className="form-control" 
+                ref={inp}  
+                onChange={() => serchInput()} 
+                placeholder="Поиск"
+            />
+            
             <div className="list-group">
                 {usersComponents}
             </div>

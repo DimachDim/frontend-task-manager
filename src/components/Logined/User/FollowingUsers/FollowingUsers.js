@@ -1,4 +1,5 @@
 import React from "react";
+import './FollowingUsers.css'
 import { useState, useEffect } from "react";
 import { useSelector, UseSelector } from "react-redux";
 
@@ -60,19 +61,26 @@ export default function FollowingUsers(){
     return(
         <div className="container mt-5">
             <div className="row">
-                <SerchByName
-                    serch={(text)=>setStringSerch(text)}
-                    users={arrData  /* Пользоватили с сервера*/}
-                />
-                <p>Мои подписки</p>
-                <UsersList
-                    users={arrMySubs}
-                />
+                <div className="serch-inp">
+                    <SerchByName
+                        serch={(text)=>setStringSerch(text)}
+                        users={arrData  /* Пользоватили с сервера*/}
+                    />
+                </div>
 
-                <p>Мои подписчики</p>
-                <UsersList
-                    users={arrMyFollowers}
-                />
+                <div className="followers">
+                    <p>Мои подписки</p>
+                    <UsersList
+                        users={arrMySubs}
+                        />
+                </div>
+
+                <div className="followers">
+                    <p>Мои подписчики</p>
+                    <UsersList
+                        users={arrMyFollowers}
+                        />
+                </div>
             </div>
         </div>
     )

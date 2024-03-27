@@ -1,0 +1,21 @@
+.serch-inp{
+    z-index: 1;
+    width: 100%;
+    position:absolute;
+}
+
+.followers{
+    margin-top: 100px;
+    border: 1px solid rgb(226, 226, 247);
+}
+
+.followers p{
+    font-size: 18pt;
+    text-align: center;
+    margin-bottom: 0;
+    color: rgb(3, 3, 95);
+}
+
+.container{
+    position: relative;
+}
