@@ -1,0 +1,17 @@
+.one-task{
+    margin-top: 40px;
+    margin-bottom: 70px;
+}
+
+/* Заголовок */
+.one-task div:nth-child(1){
+    font-size: 24pt;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Заголовок */
+.one-task div:nth-child(2){
+    border: 1px solid rgb(139, 134, 168);
+    padding: 20px 50px;
+}
