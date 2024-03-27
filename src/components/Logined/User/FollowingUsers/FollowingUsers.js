@@ -57,9 +57,9 @@ export default function FollowingUsers(){
         if(arrMyFollowers.length === 0) getArrMyFollowers()
     },[strinSerch, userId])
 
-    console.log(arrMySubs)
+
     return(
-        <div className="container mt-5">
+        <div className="container mt-5 mb-5">
             <div className="row">
                 <div className="serch-inp">
                     <SerchByName
@@ -79,7 +79,7 @@ export default function FollowingUsers(){
                     <p>Мои подписчики</p>
                     <UsersList
                         users={arrMyFollowers}
-                        />
+                    />
                 </div>
             </div>
         </div>

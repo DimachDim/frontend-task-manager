@@ -1,19 +1,20 @@
 import { CREATE_TASK } from "../../../../paths/Tasks";
 
-export default async function validatorCreateTask(refTitle, refText, sid, actionErrorText, actionInpText){
+export default async function validatorCreateTask(title, text, performerId, sid, actionErrorText, cleanData){
 
-    // Достаем содержимое
-    const title = refTitle.current.value;
-    const text = refText.current.value;
 
     // Проверяем на пустоту
-    switch(''){
-        case title:
+    switch(true){
+        case (title === ''):
             actionErrorText('Укажите заголовок!')
             return
 
-        case text:
+        case (text === ''):
             actionErrorText('Укажите текст задачи!')
+            return
+
+        case (performerId === 0):
+            actionErrorText('Укажите исполнителя')
             return
     }
 
@@ -27,6 +28,7 @@ export default async function validatorCreateTask(refTitle, refText, sid, action
         body: JSON.stringify({
             title: title,
             text: text,
+            performerId: performerId,
             sid: sid
         }) 
     })  .then(resp => resp.json())
@@ -45,8 +47,7 @@ export default async function validatorCreateTask(refTitle, refText, sid, action
         // Убираем все сообщения об ошибке
         actionErrorText(undefined)
         // Очищение полей
-        refTitle.current.value = '';
-        actionInpText('')
+        cleanData()
     
     // В остальных случаях
     } else {
