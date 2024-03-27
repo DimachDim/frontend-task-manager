@@ -16,6 +16,8 @@ export default function FollowingUsers(){
     const userId = useSelector((state)=>state.user.userId)  // id текущего пользователя
     const [arrMySubs,setArrMySubs ] = useState([])          // Хранит список на кого подписан
     
+    // Для списка подписчиков
+    const [arrMyFollowers, setArrMyFollowers] = useState([])// Хранит список подписчиков
 
     // Для запроса данных по строке поиска
     async function getArrData(){
@@ -31,6 +33,13 @@ export default function FollowingUsers(){
         }).then(resp => resp.json()).then(json => {setArrMySubs(json);}); 
     }
 
+    // Для запроса подписчиков
+    async function getArrMyFollowers(){
+        await fetch('http://taskmanager/followers/get-my-followers/' + userId,{
+            method:'get'
+        }).then(resp => resp.json()).then(json => {setArrMyFollowers(json);}); 
+    }
+
     useEffect(()=>{
         /* ДЛЯ СТРОКИ ПОИСКА */
         // Если в строке поиска есть значение запрашиваем данные
@@ -38,10 +47,13 @@ export default function FollowingUsers(){
         // Если строка пуста то удаляем все данные
         if(strinSerch === '') setArrData([])
 
-
         /* ДЛЯ СПИСКА НА КОГО ПОДПИСАН */
         // Если нет данных на кого подписан. Запрашиваем с сервера
         if(arrMySubs.length === 0) getArrMySubs()
+
+        /* ДЛЯ СПИСКА ПОДПИСЧИКОВ */
+        // Если нет данных о подписчиках. Делаем запрос
+        if(arrMyFollowers.length === 0) getArrMyFollowers()
     },[strinSerch, userId])
 
     console.log(arrMySubs)
@@ -52,9 +64,14 @@ export default function FollowingUsers(){
                     serch={(text)=>setStringSerch(text)}
                     users={arrData  /* Пользоватили с сервера*/}
                 />
-                
+                <p>Мои подписки</p>
                 <UsersList
                     users={arrMySubs}
+                />
+
+                <p>Мои подписчики</p>
+                <UsersList
+                    users={arrMyFollowers}
                 />
             </div>
         </div>
