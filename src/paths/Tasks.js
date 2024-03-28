@@ -2,7 +2,7 @@ import BASE_URL from './BaseUrl'
 
 // Тут пути для входа и регистрации
 
-// Создание задачи
+// post: 'domain/tasks' Создание задачи
 export const CREATE_TASK = BASE_URL + '/tasks';
 
 // delete: 'domain/tasks/<id>' Удаление задачи
