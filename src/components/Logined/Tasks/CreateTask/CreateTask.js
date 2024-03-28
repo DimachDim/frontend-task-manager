@@ -74,7 +74,7 @@ export default function CreateTask(){
     },[userId, userList])
 
 
-    console.log(startDate, endDate)
+
     return(
         <Form className="mx-lg-5 create-task-form">
 

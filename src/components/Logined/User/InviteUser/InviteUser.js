@@ -38,7 +38,7 @@ export default function InviteUser(){
         if(user.userId != undefined) getArrData();
     },[user, flagGenerateNew])
 
-    console.log(arrData)
+
     return(
         <div className="container invite-user">
             <div className="row">

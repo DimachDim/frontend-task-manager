@@ -29,7 +29,7 @@ export default function OneTask(props){
             body: JSON.stringify({
                 status: status,
             }) 
-        }).then(resp => resp.json()).then(json => console.log(json) ); 
+        }); 
         // Обнуляем данные от сервера чтоб они запросились еще раз
         setArrData(null)
     }
